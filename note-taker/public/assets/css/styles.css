@@ -26,14 +26,15 @@ body {
 
 .note-textarea {
   resize: none;
-  height: calc(100% - 63px);
-  padding-top: 15px;
+  min-height:500px ;
+  padding-top: 10px;
 }
 
 .note-title {
-  height: 50px;
-  margin-top: 13px;
+  height: 60px;
+  margin:0;
   font-size: 3rem;
+  border-bottom: #0dcaf0 2.5px solid;
 }
 
 .note-title:read-only,
@@ -75,4 +76,8 @@ body {
   border-right: none;
   padding: 20px;
   cursor: pointer;
+}
+
+.list-group-item:hover {
+  background-color: #0dcaf0;
 }

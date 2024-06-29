@@ -45,10 +45,10 @@ The Note Taker application allows users to write, save, and delete notes. It use
 
 ## Screenshots
 
-![Home Page](screenshots/home-page.png)
+![Home Page](note-taker/imgs/localhost_3001_.png)
 *Home Page*
 
-![Notes Page](screenshots/notes-page.png)
+![Notes Page](note-taker/imgs/localhost_3001_notes.png)
 *Notes Page*
 
 ## Features
@@ -70,15 +70,15 @@ The application can be deployed using Render. Follow these steps to deploy:
 5. Click "Create Web Service".
 6. Once the service is live, you can access your application at the generated URL.
 
-[Link to Live Application](https://your-app-name.onrender.com)
+[Link to Live Application via Render](https://note-taker-5-sfji.onrender.com/)
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
 
 ## Questions
 
 If you have any questions about the project, please feel free to reach out:
 
-- GitHub: [your-username](https://github.com/your-username)
-- Email: your-email@example.com
+- GitHub: [Endured](https://github.com/EnduringTimes)
+
