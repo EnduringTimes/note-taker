@@ -3,6 +3,7 @@ let noteTitle;
 let noteText;
 let saveNoteBtn;
 let newNoteBtn;
+let clearBtn;
 let noteList;
 
 if (window.location.pathname === '/notes') {
@@ -11,7 +12,8 @@ if (window.location.pathname === '/notes') {
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
   newNoteBtn = document.querySelector('.new-note');
-  noteList = document.querySelector('#list-group'); // Correct selector for note list
+  clearBtn = document.querySelector('.clear-btn'); // Add this line
+  noteList = document.querySelectorAll('.list-container .list-group');
 }
 
 // Show an element
@@ -54,6 +56,7 @@ const deleteNote = (id) =>
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
+  hide(clearBtn);
 
   if (activeNote.id) {
     show(newNoteBtn);
@@ -111,14 +114,24 @@ const handleNewNoteView = (e) => {
   renderActiveNote();
 };
 
+// Clears the note form
+const handleClearForm = (e) => {
+  noteTitle.value = '';
+  noteText.value = '';
+  renderActiveNote();
+};
+
 // Renders the appropriate buttons based on the state of the form
 const handleRenderBtns = () => {
   if (!noteTitle.value.trim() && !noteText.value.trim()) {
     hide(saveNoteBtn);
+    hide(clearBtn); // Add this line
   } else if (!noteTitle.value.trim() || !noteText.value.trim()) {
     hide(saveNoteBtn);
+    show(clearBtn); // Add this line
   } else {
     show(saveNoteBtn);
+    show(clearBtn); // Add this line
   }
 };
 
@@ -126,7 +139,7 @@ const handleRenderBtns = () => {
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
   if (window.location.pathname === '/notes') {
-    noteList.innerHTML = ''; // Correctly clear the list before rendering
+    noteList.forEach((el) => (el.innerHTML = ''));
   }
 
   let noteListItems = [];
@@ -170,7 +183,7 @@ const renderNoteList = async (notes) => {
   });
 
   if (window.location.pathname === '/notes') {
-    noteListItems.forEach((note) => noteList.append(note)); // Append to the correct element
+    noteListItems.forEach((note) => noteList[0].append(note));
   }
 };
 
@@ -180,6 +193,7 @@ const getAndRenderNotes = () => getNotes().then(renderNoteList);
 if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
+  clearBtn.addEventListener('click', handleClearForm); // Add this line
   noteForm.addEventListener('input', handleRenderBtns);
 }
 
